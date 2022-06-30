@@ -36,7 +36,7 @@ class PostsFetcher(private val client: Client, private val fileService: FileServ
 
     private suspend fun Post.fetchComments(): Either<AppError, Post> = either {
         val comments: List<Comment> =
-            client.getObjectList<Comment>("$GET_POSTS_BASE_URL/$GET_COMMENTS_SUFFIX?postId=$id").bind()
+            client.getObjectList<Comment>("$GET_POSTS_BASE_URL/$GET_POSTS_SUFFIX/$id/$GET_COMMENTS_SUFFIX").bind()
         copy(comments = comments)
     }
 }
