@@ -1,7 +1,7 @@
 package com.me.postfetcher.client
 
 import arrow.core.Either
-import arrow.core.computations.either
+import arrow.core.continuations.either
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.me.postfetcher.AppError.ClientError

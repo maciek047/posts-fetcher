@@ -1,7 +1,7 @@
 package com.me.postfetcher.service
 
 import arrow.core.Either
-import arrow.core.computations.either
+import arrow.core.continuations.either
 import com.google.gson.Gson
 import com.me.postfetcher.AppError.FileServiceError
 import com.me.postfetcher.common.extensions.getByPropertyName
@@ -19,13 +19,11 @@ class FileService {
     ): Either<FileServiceError, String> =
         either {
             val filePath = filePathResolver(baseDirectory, filePath)
-            var counter = 1
 
-            objects.forEach { item ->
+            objects.forEachIndexed { counter, item ->
                 val fileName = item.getByPropertyName(fileNameFromProperty) ?: counter
                 val finalPath = "$filePath\\$fileName$fileExtension"
                 File(finalPath).writeText(Gson().toJson(item))
-                counter++
             }
             filePath
         }
