@@ -1,6 +1,6 @@
 package com.me.postfetcher.route
 
-import arrow.core.computations.either
+import arrow.core.continuations.either
 import com.me.postfetcher.AppError
 import com.me.postfetcher.common.extensions.apiResponse
 import com.me.postfetcher.common.extensions.toApiResponse
